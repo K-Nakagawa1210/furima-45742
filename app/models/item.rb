@@ -4,4 +4,5 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :condition
   belongs_to :shipping_fee
+  belongs_to :prefecture
 end
