@@ -16,25 +16,48 @@
 ### Association
 - has_many :items
 - has_many :orders
+<<<<<<< Updated upstream
 
+=======
+- has_many :comments
+>>>>>>> Stashed changes
 
 ## items テーブル
 
 | Column           | Type       | Options                        |
 |------------------|------------|--------------------------------|
+<<<<<<< Updated upstream
 | product_name     | string     | null: false                    |
+=======
+| name             | string     | null: false                    |
+>>>>>>> Stashed changes
 | description      | text       | null: false                    |
 | price            | integer    | null: false                    |
 | category_id      | integer    | null: false                    |
 | condition_id     | integer    | null: false                    |
 | shipping_fee_id  | integer    | null: false                    |
 | prefecture_id    | integer    | null: false                    |
+<<<<<<< Updated upstream
 | shipping_day_id  | integer    | null: false                    |
+=======
+| shipping_days_id | integer    | null: false                    |
+>>>>>>> Stashed changes
 | user             | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
 - has_one :order
+<<<<<<< Updated upstream
+
+
+## orders テーブル
+
+| Column | Type       | Options                        |
+|--------|------------|--------------------------------|
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
+=======
+- has_many :comments
 
 
 ## orders テーブル
@@ -64,3 +87,37 @@
 
 ### Association
 - belongs_to :order
+
+
+## comments テーブル
+
+| Column  | Type       | Options                        |
+|---------|------------|--------------------------------|
+| text    | text       | null: false                    |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
+>>>>>>> Stashed changes
+
+### Association
+- belongs_to :user
+- belongs_to :item
+<<<<<<< Updated upstream
+- has_one :address
+
+
+## addresses テーブル
+
+| Column        | Type       | Options                        |
+|---------------|------------|--------------------------------|
+| postal_code   | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| city          | string     | null: false                    |
+| address       | string     | null: false                    |
+| building      | string     |                                |
+| phone_number  | string     | null: false                    |
+| order         | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :order
+=======
+>>>>>>> Stashed changes
