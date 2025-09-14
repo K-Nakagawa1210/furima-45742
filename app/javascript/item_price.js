@@ -1,4 +1,4 @@
-document.addEventListener("turbo:load", () => {
+const price = () => {
   // 価格入力欄と表示要素を取得
   const priceInput = document.getElementById("item-price");
   const feeEl = document.getElementById("add-tax-price");
@@ -28,4 +28,8 @@ document.addEventListener("turbo:load", () => {
     feeEl.textContent = fee.toLocaleString();      // 3桁区切り表示
     profitEl.textContent = profit.toLocaleString();
   });
-});
+};
+
+// ページ初回ロードと render 両方で発火
+window.addEventListener("turbo:load", price);
+window.addEventListener("turbo:render", price);
