@@ -1,0 +1,32 @@
+const pay = () => {
+  const form = document.getElementById("charge-form");
+  if (!form) return;  // ページにフォームがない場合は何もしない
+
+  const payjp = Payjp("<%= ENV['PAYJP_PUBLIC_KEY'] %>");  // 環境変数の公開鍵を使用
+  const elements = payjp.elements();
+
+  const numberElement = elements.create('cardNumber');
+  const expiryElement = elements.create('cardExpiry');
+  const cvcElement    = elements.create('cardCvc');
+
+  numberElement.mount('#number-form');
+  expiryElement.mount('#expiry-form');
+  cvcElement.mount('#cvc-form');
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    payjp.createToken(numberElement).then((response) => {
+      if (response.error) {
+        alert(response.error.message);
+      } else {
+        const token = response.id;
+        const tokenInput = `<input type="hidden" name="token" value="${token}">`;
+        form.insertAdjacentHTML("beforeend", tokenInput);
+        form.submit();
+      }
+    });
+  });
+};
+
+window.addEventListener("turbo:load", pay);
