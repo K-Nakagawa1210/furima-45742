@@ -30,7 +30,7 @@ RSpec.describe OrderAddress, type: :model do
       it '都道府県が未選択では保存できない' do
         @order_address.prefecture_id = 1
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@order_address.errors.full_messages).to include("Prefecture must be selected")
       end
 
       it '市町村が空では保存できない' do
@@ -54,7 +54,7 @@ RSpec.describe OrderAddress, type: :model do
       it '電話番号が9桁以下では保存できない' do
         @order_address.phone_number = '090123456'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number id invalid")
+        expect(@order_address.errors.full_messages).to include("Phone number is invalid")
       end
 
       it '電話番号が12桁以上では保存できない' do
@@ -72,7 +72,7 @@ RSpec.describe OrderAddress, type: :model do
       it 'tokenが空では保存できない' do
         @order_address.token = nil
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Token code can't be blank")
+        expect(@order_address.errors.full_messages).to include("Token can't be blank")
       end
 
       it 'userが紐づいていないと保存できない' do
