@@ -17,6 +17,7 @@ test:
   password:
   host: localhost
   database: furima-45742_test
+  fiber: false 
 
 production:
   <<: *default
