@@ -9,7 +9,7 @@ gem "rails", "~> 7.1.0"
 gem "sprockets-rails"
 
 # Use mysql as the database for Active Record
-gem "mysql2", "~> 0.5"
+gem "mysql2", "~> 0.5.6"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
@@ -50,6 +50,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.0' 
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'dotenv-rails'
+#  gem 'database_cleaner-active_record'
 end
 
 group :development do
@@ -80,3 +82,7 @@ gem 'devise'
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'active_hash'
+gem 'pry-rails'
+gem 'payjp'
+gem 'gon'
+
